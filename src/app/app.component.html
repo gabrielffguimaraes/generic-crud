@@ -1,0 +1,21 @@
+<mat-toolbar>
+  <span>CRUD GENÉRICO</span>
+</mat-toolbar>
+<mat-drawer-container class="container-sidebar">
+  <mat-drawer mode="side" opened>
+    <div>
+      <mat-selection-list #option [multiple]="false">
+        <mat-list-option [value]="'alunos'">ALUNOS</mat-list-option>
+        <mat-list-option [value]="'cursos'">CURSOS</mat-list-option>
+        <mat-list-option [value]="'turmas'">TURMAS</mat-list-option>
+      </mat-selection-list>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content class="container-body">
+    <app-alunos *ngIf="option.selectedOptions.selected[0]?.value === 'alunos'"></app-alunos>
+    <app-cursos *ngIf="option.selectedOptions.selected[0]?.value === 'cursos'"></app-cursos>
+    <app-turmas *ngIf="option.selectedOptions.selected[0]?.value === 'turmas'"></app-turmas>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
