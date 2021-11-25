@@ -26,17 +26,20 @@ export class AlunosComponent implements OnInit {
   onSubmit(): void {
     if (this.formulario.valid) {
       this.alunosService
-        .create(this.formulario.value as Aluno)
-        .subscribe(
-          success => {
-            this.refresh();
-          },
-          error => {
-            alert('Error');
-          }, () => {
-          }
-        );
+        .save(this.formulario.value as Aluno)
+        .subscribe(success => { this.refresh();  this.formulario.reset(); } , error => { alert('Error'); } , () => {});
     }
+  }
+  onEdit(registro: Aluno): void {
+    this.formulario.get('id').setValue(registro.id);
+    this.formulario.get('nome').setValue(registro.nome);
+  }
+  onDelete(id: number): void {
+    this.alunosService
+      .delete(id)
+      .subscribe( success => {
+        this.refresh();
+      });
   }
   refresh(): void {
     this.alunosService
