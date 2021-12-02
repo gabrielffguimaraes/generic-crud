@@ -1,12 +1,26 @@
-<form [formGroup]="formulario"  (submit)="onSubmit()" >
-  <div>
-    <input id="id" type="text" placeholder="ID" formControlName="id" readonly>
-  </div>
-  <div>
-    <input id="nome" type="text"  placeholder="Aluno" formControlName="nome">
-  </div>
-  <button type="submit" [disabled]="!formulario.valid"> Salvar </button>
-</form>
+<div class="mb-3" (submit)="onSubmit()">
+  <form [formGroup]="formulario">
+    <div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>ID</mat-label>
+        <input type="text" readonly  matInput formControlName="id" placeholder="ID">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input type="nome" matInput formControlName="nome" placeholder="Nome">
+      </mat-form-field>
+    </div>
+    <button mat-raised-button [disabled]="!formulario.valid" color="primary" type="submit">
+      {{ this.editarFlag ? "Editar" : "Adicionar" }}
+    </button>&nbsp;&nbsp;
+    <button (click)=this.formulario.reset() *ngIf="this.editarFlag" mat-stroked-button color="primary" type="button">
+      Cancelar
+    </button>
+  </form>
+</div>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [style.width]="'100%'">
   <!-- Position Column -->
   <ng-container matColumnDef="id">
@@ -22,13 +36,13 @@
 
   <!-- Name Column -->
   <ng-container matColumnDef="options">
-    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <th mat-header-cell *matHeaderCellDef> Ação </th>
     <td mat-cell *matCellDef="let element">
-      <button (click)="onDelete(element?.id)" mat-fab color="primary" aria-label="Example icon button with a delete icon">
-        <mat-icon>delete</mat-icon>
+      <button (click)="onDelete(element?.id)" mat-mini-fab color="primary">
+        <mat-icon class="f-19">delete</mat-icon>
       </button> &nbsp;
-      <button mat-fab (click)="onEdit(element)" color="primary" aria-label="Example icon button with a delete icon">
-        <mat-icon>mode</mat-icon>
+      <button mat-mini-fab (click)="onEdit(element)" color="primary" aria-label="Example icon button with a delete icon">
+        <mat-icon class="f-19">mode</mat-icon>
       </button>
     </td>
   </ng-container>

@@ -3,3 +3,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 mat-drawer {
   width:250px;
 }
+.f-19 {
+  font-size:19px;
+}
+
+.mb-3 {
+  margin-bottom:20px;
+}
