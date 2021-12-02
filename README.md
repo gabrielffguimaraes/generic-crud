@@ -7,7 +7,7 @@ que por meio de herança é consumida pelas classes principais , com as operaç�
 
 no exemplo abaixo temos uma classe consumindo o crudService.
 
-class CursosService extends GenericCrudService<T> {
+class CursosService extends GenericCrudService<T> {\n
   constructor(private _http: HttpClient) {
     super();
     this.API = `${environment.baseUrl}/cursos`;
