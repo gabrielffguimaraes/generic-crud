@@ -20,7 +20,7 @@ class CursosService extends GenericCrudService<T> {
 ## Classe genérica
 
 ````typescript
-export class GenericCrudService<T> {
+class GenericCrudService<T> {
   protected API: string;
   protected http: HttpClient;
   constructor() {}
